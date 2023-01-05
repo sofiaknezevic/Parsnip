@@ -1,23 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="8bY-jw-mcl">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Tab Bar Controller-->
+        <scene sceneID="ZsR-5H-wp7">
+            <objects>
+                <tabBarController id="8bY-jw-mcl" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="ci2-57-cUJ">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="ic3-pK-TvR"/>
+                        <segue destination="J35-LS-9Xm" kind="relationship" relationship="viewControllers" id="i7g-oI-auu"/>
+                        <segue destination="iOn-a7-fQR" kind="relationship" relationship="viewControllers" id="D2N-X2-cqD"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LG3-PE-Vfu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1048" y="-1408"/>
+        </scene>
+        <!--LearnVC-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Parsnip" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="LearnVC" id="BYZ-38-t0r" customClass="DictionaryViewController" customModule="Parsnip" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6NJ-w3-n8C">
-                                <rect key="frame" x="191" y="436" width="32" height="34"/>
+                                <rect key="frame" x="191" y="413.5" width="32" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
@@ -25,8 +45,8 @@
                                     <outlet property="pasteDelegate" destination="BYZ-38-t0r" id="vPa-16-gQh"/>
                                 </connections>
                             </textField>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="SJg-ir-nd2">
-                                <rect key="frame" x="24" y="518" width="366" height="320"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SJg-ir-nd2">
+                                <rect key="frame" x="24" y="495.5" width="366" height="245.5"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <color key="textColor" systemColor="labelColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -36,7 +56,7 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="SJg-ir-nd2" secondAttribute="bottom" constant="24" id="7c1-D4-sia"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="SJg-ir-nd2" secondAttribute="bottom" constant="72" id="Pxk-SH-O3Z"/>
                             <constraint firstItem="SJg-ir-nd2" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="24" id="SRO-dB-dPi"/>
                             <constraint firstItem="6NJ-w3-n8C" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="j09-Jk-5z2"/>
                             <constraint firstItem="SJg-ir-nd2" firstAttribute="top" secondItem="6NJ-w3-n8C" secondAttribute="bottom" constant="48" id="t2c-lx-tAo"/>
@@ -44,6 +64,7 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="SJg-ir-nd2" secondAttribute="trailing" constant="24" id="yQd-eg-bxQ"/>
                         </constraints>
                     </view>
+                    <tabBarItem key="tabBarItem" title="learn" id="OAA-Bt-yR0"/>
                     <connections>
                         <outlet property="definitionTextView" destination="SJg-ir-nd2" id="Xnd-NX-x2n"/>
                         <outlet property="textField" destination="6NJ-w3-n8C" id="uhA-qI-suF"/>
@@ -51,12 +72,71 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-10" y="27"/>
+            <point key="canvasLocation" x="604" y="-629"/>
+        </scene>
+        <!--PracticeVC-->
+        <scene sceneID="2D8-jE-ciP">
+            <objects>
+                <viewController storyboardIdentifier="practiceVCID" title="PracticeVC" id="J35-LS-9Xm" customClass="PracticeViewController" customModule="Parsnip" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Agb-dX-jlX">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qdl-4c-cMV">
+                                <rect key="frame" x="146" y="730.5" width="122.5" height="34.5"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="change word"/>
+                                <connections>
+                                    <action selector="changeWordButtonDidTap:" destination="J35-LS-9Xm" eventType="touchUpInside" id="bk4-U2-wIj"/>
+                                </connections>
+                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zdd-PE-HbM">
+                                <rect key="frame" x="52" y="296" width="310.5" height="269"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="6hI-56-Id0"/>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="zdd-PE-HbM" firstAttribute="width" secondItem="Agb-dX-jlX" secondAttribute="width" multiplier="0.75" id="2Rz-ep-rfr"/>
+                            <constraint firstItem="zdd-PE-HbM" firstAttribute="height" secondItem="Agb-dX-jlX" secondAttribute="height" multiplier="0.3" id="3Za-ni-YKZ"/>
+                            <constraint firstItem="qdl-4c-cMV" firstAttribute="centerX" secondItem="6hI-56-Id0" secondAttribute="centerX" id="OTP-Zk-cAT"/>
+                            <constraint firstItem="zdd-PE-HbM" firstAttribute="centerX" secondItem="6hI-56-Id0" secondAttribute="centerX" id="bZM-lc-JkC"/>
+                            <constraint firstItem="qdl-4c-cMV" firstAttribute="top" relation="greaterThanOrEqual" secondItem="zdd-PE-HbM" secondAttribute="bottom" constant="24" id="q7w-TA-Ex0"/>
+                            <constraint firstItem="6hI-56-Id0" firstAttribute="bottom" secondItem="qdl-4c-cMV" secondAttribute="bottom" constant="48" id="uWV-4f-0YO"/>
+                            <constraint firstItem="zdd-PE-HbM" firstAttribute="centerY" secondItem="6hI-56-Id0" secondAttribute="centerY" id="vLd-O7-27R"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="practice" id="PbW-NF-aqA"/>
+                    <connections>
+                        <outlet property="changeWordButton" destination="qdl-4c-cMV" id="A8W-hc-fZs"/>
+                        <outlet property="flashCardView" destination="zdd-PE-HbM" id="yc4-qs-ECP"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hQP-BQ-HZr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="364" y="317"/>
+        </scene>
+        <!--bank-->
+        <scene sceneID="H3i-Mc-kFy">
+            <objects>
+                <viewController id="iOn-a7-fQR" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="1j9-7k-Cxo">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="xSs-22-tZK"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="bank" id="5i1-hQ-mub"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="znt-eA-mgw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-943" y="483"/>
         </scene>
     </scenes>
     <resources>
         <systemColor name="labelColor">
-            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

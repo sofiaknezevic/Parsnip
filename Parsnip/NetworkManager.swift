@@ -7,31 +7,30 @@
 
 import Foundation
 
-typealias DefinitionCompletionBlock = ([Definition]?, Error?) -> Void
+typealias DefinitionCompletionBlock = ([[Definition]]?, Error?) -> Void
 
 struct Root: Codable {
     let word: String
+    let meanings: [Meaning]
+}
+
+struct Meaning: Codable {
     let definitions: [Definition]
+    let partOfSpeech: String
 }
 
 struct Definition: Codable {
     let definition: String
-    let partOfSpeech: String
 }
 
 public class NetworkManager {
     func getWordDefinition(with word: String, completion: @escaping DefinitionCompletionBlock) {
-
-        let headers = [
-            "x-rapidapi-host": "wordsapiv1.p.rapidapi.com",
-            "x-rapidapi-key": "59ae1ae930msh13b0fa2b32fb5aep10eb47jsn4e44218a5176"
-        ]
-
-        let request = NSMutableURLRequest(url: NSURL(string: "https://wordsapiv1.p.rapidapi.com/words/\(word)/definitions")! as URL,
+        guard let url = URL(string: "https://api.dictionaryapi.dev/api/v2/entries/en/\(word)") else { return completion(nil, nil) }
+        
+        let request = NSMutableURLRequest(url: url,
                                                 cachePolicy: .useProtocolCachePolicy,
                                             timeoutInterval: 10.0)
         request.httpMethod = "GET"
-        request.allHTTPHeaderFields = headers
 
         let session = URLSession.shared
         let dataTask = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
@@ -39,8 +38,9 @@ public class NetworkManager {
                 completion(nil, error)
             } else {
                 guard let data = data else { return }
-                let results = try! JSONDecoder().decode(Root.self, from: data)
-                completion(results.definitions, nil)
+                let results = try? JSONDecoder().decode([Root].self, from: data)
+                let definitions = results?.first?.meanings.map { $0.definitions }
+                completion(definitions, nil)
             }
         })
 
